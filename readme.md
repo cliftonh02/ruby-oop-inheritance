@@ -224,18 +224,21 @@ end
 
 class LoudPerson < Person
   def introduction
-    puts "HELLO, I'M #{name.upcase}"
+    puts "HELLO, I'M #{name.upcase}!!"
   end
 end
 
 jill = Person.new("Jill", 10)
 bob = LoudPerson.new("Bob", 10)
 
-puts bob.name
+puts jill.introduction
+puts
+
 puts bob.introduction
 
+puts "Bob's name: '#{bob.name}'"
 bob.hunger_level = 5
-puts bob.hunger_level
+puts "Bob hunger level: #{bob.hunger_level}"
 ```
 
 ### You Do: Inheritance

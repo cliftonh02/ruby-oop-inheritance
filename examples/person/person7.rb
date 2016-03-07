@@ -27,7 +27,7 @@ end
 
 class LoudPerson < Person
   def introduction
-    "HELLO, I'M #{name.upcase}"
+    "HELLO, I'M #{name.upcase}!!"
   end
 end
 
@@ -37,7 +37,6 @@ bob = LoudPerson.new("Bob", 10)
 puts jill.introduction
 
 puts
-
 puts bob.introduction
 
 puts "Bob's name: '#{bob.name}'"

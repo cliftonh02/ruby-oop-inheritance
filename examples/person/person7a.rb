@@ -32,7 +32,7 @@ end
 
 class LoudPerson < Person
   def introduction
-    "HELLO, I'M #{name.upcase}"
+    "HELLO, I'M #{name.upcase}!!"
   end
 end
 
