@@ -243,8 +243,36 @@ puts bob.hunger_level
 - Make a sleepy person, who sleeps through the introduction.
 - Make a baby, who can only say "Dada" and is always hungry (hunger_level never reaches 0)
 
+
+
+## Visibility
+
+When discussing object-oriented programming, you may hear the term "visibility".  This refers to the availability, or scope, of a method. Who can call this method on the object?
+
+- Public: any one can call this method.  Public is default accessibility level for class methods.
+- Private and Protected: (not common) Not visible to other objects from other classes.  Control visibility to other instances of that Class, including descendants.
+
+
 ## Sample Questions
 
 - Explain the use of self in Ruby
 - Explain the difference between local, instance and class variables
 - Define and differentiate between class and instance methods
+-
+
+## Vocabulary
+
+* **class**: an object blueprint
+* **instance**: a constructed class instance
+* **sub-class**: a class derived through inheritance.
+* **extends**: a class is "extended" into a sub-class.
+* **self**: an instance's way of referring to itself.
+* **super**: a sub-class' way of referring to its parent class.
+* **public**: methods available outside of the class.
+* **private**: methods available only within the class.
+* **protected**: methods available to only the class and its descendants.
+
+## Resources
+
+- Visibility http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods
+- Private/Protected http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html
