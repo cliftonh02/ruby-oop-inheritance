@@ -60,7 +60,7 @@ class Person
 end
 ```
 
-You can find the answers in [this file](examples/self.rb).
+You can find the answers in [this file](examples/person/self.rb).
 
 To sum up:
 1. Always use getter/setter methods inside the class instead of instance variables.
