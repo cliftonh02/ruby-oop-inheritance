@@ -222,10 +222,6 @@ bob.hunger_level = 5
 puts bob.hunger_level
 ```
 
-# Homework
-
-[Landlord! Ruby Classes Part](https://github.com/ga-dc/landlord/blob/andy/readme.md#ruby-classes)
-
 
 ## Sample Questions
 
