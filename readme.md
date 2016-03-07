@@ -26,6 +26,7 @@ will have, and which one is the best.
 Feel free to run this code and play with it.
 
 ```ruby
+# person/self.rb
 class Person
   attr_accessor :name
   attr_reader :hunger_level
@@ -53,8 +54,8 @@ class Person
     # goal is to set/update our person's hunger level in the best way possible
     # SETTERS
       @hunger_level = -10
-      hunger_level = 10
-      self.hunger_level = 10
+      hunger_level = -10
+      self.hunger_level = -10
   end
 end
 ```
@@ -106,8 +107,8 @@ far, we've only written instance methods.
 **Examples**
 
 * Instance
-  * `adam.speak`
-  * `adam.age = 41`
+  * `jill.speak`
+  * `jill.age = 41`
   * `bob.speak`
   * `ferrari.start`
   * `gorilla.eat("banana")`
@@ -122,7 +123,10 @@ variables, which should be used sparingly).
 ### Defining class vs instance methods
 
 ```ruby
-# person6.rb
+# person6.rb: person_count
+# from irb:
+#   load "examples/person/person6.rb"
+
 class Person
   attr_accessor :name
   @@person_count = 0 # class variable
@@ -133,7 +137,7 @@ class Person
   end
 
   # instance method, just like we've seen before
-  def introduce
+  def introduction
     puts "Hello, I'm #{name}, one of #{Person.person_count} people"
   end
 
@@ -142,9 +146,19 @@ class Person
   def self.person_count
     return @@person_count
   end
-
 end
+
+Person.person_count   #=> 0
+jill = Person.new("Jill")
+Person.person_count   #=> 1
+bob = Person.new("Bob")
+Person.person_count   #=> 2
 ```
+
+### You Do
+
+- add support for `matt.person_count`
+- add support for asking if a person is old enough to vote.
 
 ### Code Walkthrough(10 minutes)
 
@@ -154,17 +168,17 @@ end
 
 3 minutes to discuss:
 
+Questions
+---
 * Can we use instance variables in class methods?
 * Can we use class variables in an instance method?
-
 * Can we call instance methods in class methods?
 * Can we call class methods inside an instance method?
 
 
-Answers:
+> Answers:
 * No, ruby wouldn't know which instance's value to use.
 * Yes, the one copy is shared, and all instances can access.
-
 * No, again, instance methods depend on being called on a specific instance,
   class wouldn't know which to choose.
 * Yes, the method is shared, and can be used by all instances.
@@ -182,6 +196,8 @@ with rails in a few weeks.
 
 Here's an example:
 ```ruby
+# person7.rb: inheritance
+
 class Person
   attr_accessor :name
   attr_reader :hunger_level
@@ -191,7 +207,7 @@ class Person
     @hunger_level = initial_hunger_
   end
 
-  def introduce
+  def introduction
     puts "Hello, I'm #{name}"
   end
 
@@ -207,21 +223,25 @@ class Person
 end
 
 class LoudPerson < Person
-  def introduce
+  def introduction
     puts "HELLO, I'M #{name.upcase}"
   end
 end
 
-adam = Person.new("Adam", 10)
+jill = Person.new("Jill", 10)
 bob = LoudPerson.new("Bob", 10)
 
 puts bob.name
-puts bob.introduce
+puts bob.introduction
 
 bob.hunger_level = 5
 puts bob.hunger_level
 ```
 
+### You Do: Inheritance
+
+- Make a sleepy person, who sleeps through the introduction.
+- Make a baby, who can only say "Dada" and is always hungry (hunger_level never reaches 0)
 
 ## Sample Questions
 
