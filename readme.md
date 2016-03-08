@@ -44,18 +44,20 @@ class Person
     end
   end
 
-  def demonstrate_using_self
+  def demonstrate_getting_name
     # goal is to get our person's name in the best way possible
     # GETTERS
-      puts @name
-      puts name
-      puts self.name
+    puts @name
+    puts name
+    puts self.name
+  end
 
+  def demonstrate_setting_hunger_level
     # goal is to set/update our person's hunger level in the best way possible
     # SETTERS
-      @hunger_level = -10
-      hunger_level = -10
-      self.hunger_level = -10
+    @hunger_level = -10
+    hunger_level = -10
+    self.hunger_level = -10
   end
 end
 ```
