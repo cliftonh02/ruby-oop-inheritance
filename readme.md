@@ -277,5 +277,6 @@ When discussing object-oriented programming, you may hear the term "visibility".
 
 ## Resources
 
+- Getters and Setters: http://andrewsunglaekim.github.io/Get-set-ruby/
 - Visibility http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods
 - Private/Protected http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html
