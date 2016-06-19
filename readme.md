@@ -514,13 +514,6 @@ Artist.where(nationality: "Sweden")
 * **private**: methods available only within the class.
 * **protected**: methods available to only the class and its descendants.
 
-## Bonus: Visibility
-
-When discussing object-oriented programming, you may hear the term "visibility".  This refers to the availability, or scope, of a method. Who can call this method on the object?
-
-* Public: any one can call this method.  Public is default accessibility level for class methods.
-* Private and Protected: (not common) Not visible to other objects from other classes.  Control visibility to other instances of that Class, including descendants.
-
 ## Resources
 
 * [Getters and Setters](http://andrewsunglaekim.github.io/Get-set-ruby/)
