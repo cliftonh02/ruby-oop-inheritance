@@ -77,6 +77,12 @@ Let's create a `Person` class...
   end
   ```
 
+  ```rb
+  adrian = Person.new("Adrian", 29)
+  adrian.name
+  # => "Adrian"
+  ```
+
 </details>
 <br/>
 <details>
@@ -97,6 +103,13 @@ Let's create a `Person` class...
       @name = new_name
     end
   end
+  ```
+
+  ```rb
+  adrian = Person.new("Adrian", 29)
+  adrian.name = "Chad"
+  adrian.name
+  # => "Chad"
   ```
 
 </details>
@@ -331,10 +344,6 @@ Sometimes we don't want to go through the trouble of creating a higher class lik
 
 </details>
 
-One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
-
----------
-
 <details>
   <summary><strong>What are two ways we can use `self` in our `Person` class?</strong></summary>
 
@@ -358,13 +367,7 @@ One benefit of Ruby is that it is much easier to determine what context we are w
 
 </details>
 
----------
-
-To sum up:
-1. Always use getter/setter methods inside the class instead of instance variables.
-  * exception: you can use instance variables inside getter / setter methods themselves
-2. To call a *getter* method inside a class, self is optional, e.g. both `self.name` AND `name` works
-3. To call a *setter* method inside a class, you MUST use self, e.g. `self.color = red`
+One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
 
 ### You Do: Keep Building `Person`
 
