@@ -66,7 +66,7 @@ Let's create a `Person` class...
 </details>
 <br/>
 <details>
-  <summary><strong>Q: Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</summary>
+  <summary><strong>Q: Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
   <br/>
 
   `@` indicates that we are defining an instance variable, which is a value that is accessible anywhere inside a given instance of a class.
