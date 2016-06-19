@@ -288,6 +288,10 @@ We could also add other attributes and methods to the `Group` class. It doesn't 
 
 To illustrate the use of class variables and methods, we're going to move forward without `Group` in this lesson.
 
+### When Might You Use Class Variables?
+
+Sometimes we don't want to go through the trouble of creating a higher class like `Group`. This is especially the case when dealing with application configuration values. [Take a look at this SASS example...](https://github.com/sass/sass/blob/bbc7663c1e24ed7f8e7014f356af1f6c4209aac9/lib/sass/version.rb#L48-L82)
+
 ### Self
 
 <details>
@@ -318,18 +322,11 @@ To sum up:
 
 ### You Do: Keep Building `Person`
 
-<!-- AM: Need to update this with better prompt -->
-
 Make the following additions to our `Person` class...
 
-* Add support for `adrian.person_count`
-* Add support for asking if a person is old enough to vote.
-
-### Code Walkthrough (10 minutes)
-
-<!-- AM: Is this section worth keeping? Seems the point is just to show that sometimes we create a `Config` class that ONLY contains class variables and methods. -->
-
-**[Application Config Class in Ruby](https://github.com/ga-dc/ruby_application_configuration)**
+* A method that checks to see if a `Person` is old enough to vote.
+* A method that counts the number of `Person` instances that have been created.
+* A method that returns all `Person` instances that begin with a certain letter. This letter should be passed in as an argument.
 
 ## Break
 
