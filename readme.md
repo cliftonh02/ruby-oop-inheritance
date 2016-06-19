@@ -399,9 +399,7 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/ma
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
-[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/solution)
-
-Here's what an `Artist` model looks like in Tunr...
+[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/solution). Here's what an `Artist` model looks like...
 
 ```rb
 class Artist < ActiveRecord::Base
