@@ -146,8 +146,6 @@ Let's create a `Person` class...
   # => "Hi, my name is Adrian."
   ```
 
-  > We could also use `self.name` in place of the instance variable `@name`. This is actually preferable. We'll explain why later...
-
 </details>
 
 <details>
@@ -187,7 +185,7 @@ Let's create a `Person` class...
     end
 
     # Here we're creating a method that retrieves the value of `@@people`
-    def Person.get_people
+    def self.get_people
       return @@people
     end
   end
@@ -207,41 +205,11 @@ Let's create a `Person` class...
 
 </details>
 
-### Turn & Talk
-
-Answer the following questions with a partner...
-
-<details>
-  <summary><strong>Can we use instance variables in class methods?</strong></summary>
-
-  > No, ruby wouldn't know which instance's value to use.
-
-</details>
-<br/>
-<details>
-  <summary><strong>Can we use class variables in an instance method?</strong></summary>
-
-  > Yes, the one copy is shared and all instances can access.
-
-</details>
-<br/>
-<details>
-  <summary><strong>Can we call instance methods in class methods?</strong></summary>
-
-  > No. Again, instance methods depend on being called on a specific instance. The class wouldn't know which instance to choose.
-
-</details>
-<br/>
-<details>
-  <summary><strong>Can we call class methods inside an instance method?</strong></summary>
-
-  > Yes, the method is shared and can be used by all instances.
-
-</details>
-
 ### Common Practice: No Class Variables
 
-Developers tend not to use class variables. Instead, a more common practice is to create a higher-level class that handles the same functionality. For example, in the case of `Person`, we could have a `Group` class. Each instance of `Group` would have an instance variable `@people` which would contain each instance of `Person`.
+Developers tend not to use class variables. As we'll see later in this lesson, class variables might not work as intended when inheritance is brought into the mix.
+
+Instead, a more common practice is to create a higher-level class that handles the same functionality. For example, in the case of `Person`, we could have a `Group` class. Each instance of `Group` would have an instance variable `@people` which would contain each instance of `Person`.
 
 ```rb
 class Group
@@ -310,9 +278,32 @@ Sometimes we don't want to go through the trouble of creating a higher class lik
 
 One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
 
-### Add `self` to Person
+---------
 
-<!-- AM: What's the best way to refactor `Person` using `self`? -->
+<details>
+  <summary><strong>How could we go about using `self` in our `Person` class?</strong></summary>
+
+  ```rb
+  # In a class method definition. We've already done this...
+  def self.get_people
+    return @@people
+  end
+  ```
+
+  > When used in a method name, `self` = the class.
+
+  ```rb
+  # In place of an instance variable...
+  def say_name
+    puts "Hi, my name is " + self.name + "."
+  end
+  ```
+
+  > When used inside of a method, `self` = the instance.
+
+</details>
+
+---------
 
 To sum up:
 1. Always use getter/setter methods inside the class instead of instance variables.
@@ -358,7 +349,7 @@ class Person
     puts "I am #{@age} years old."
   end
 
-  def Person.get_people
+  def self.get_people
     return @@people
   end
 end
@@ -402,7 +393,9 @@ bob.say_name
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
 
+### You Do: Shopping List (Optional)
 
+Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/master/readme.md) and follow the instructions in the readme.
 
 ## What's Next?
 
