@@ -403,7 +403,7 @@ bob.say_name
 
 <!-- AM: I'm going to add to this exercise. -->
 
-Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the Readme.
+Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
 
 
 ## Visibility
@@ -415,12 +415,17 @@ When discussing object-oriented programming, you may hear the term "visibility".
 - Public: any one can call this method.  Public is default accessibility level for class methods.
 - Private and Protected: (not common) Not visible to other objects from other classes.  Control visibility to other instances of that Class, including descendants.
 
+## What's Next?
+
+<!-- AM: Insert preview of ActiveRecord and how it employs classes and inheritance. -->
 
 ## Sample Questions
 
 * Explain the use of self in Ruby.
 * Explain the difference between local, instance and class variables.
 * Define and differentiate between class and instance methods.
+* What does it mean for a class to inherit from another?
+* How do we overwrite methods inherited from a parent class?
 
 ## Vocabulary
 
