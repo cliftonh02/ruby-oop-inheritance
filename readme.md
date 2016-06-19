@@ -23,7 +23,7 @@ Let's create a `Person` class...
 --------
 
 <details>
-  <summary><strong>Q: What's the difference between a class and an instance?</strong></summary>
+  <summary><strong>What's the difference between a class and an instance?</strong></summary>
   <br/>
 
   A class is a blueprint. An instance is an object generated from that blueprint.
@@ -66,7 +66,7 @@ Let's create a `Person` class...
 </details>
 <br/>
 <details>
-  <summary><strong>Q: Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
+  <summary><strong>Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
   <br/>
 
   `@` indicates that we are defining an instance variable, which is a value that is accessible anywhere inside a given instance of a class.
@@ -291,14 +291,14 @@ To illustrate the use of class variables and methods, we're going to move forwar
 ### Self
 
 <details>
-  <summary><strong>Q: What does `self` mean in Ruby?</strong></summary>
+  <summary><strong>What does `self` mean in Ruby?</strong></summary>
 
   > It contains the current instance of an object.
 
 </details>
 
 <details>
-  <summary><strong>Q: What is the equivalent of `self` in Javascript?</strong></summary>
+  <summary><strong>What is the equivalent of `self` in Javascript?</strong></summary>
 
   > `this`
 
