@@ -23,7 +23,7 @@ But first, let's review and build upon some of the concepts that were introduced
 Let's create a `Person` class together...
 
 <details>
-  <summary><strong>Q: How do we begin defining a <code>Person</code> class?</strong></summary>
+  <summary><strong>How do we begin defining a <code>Person</code> class?</strong></summary>
 
   ```rb
   class Person
@@ -32,8 +32,10 @@ Let's create a `Person` class together...
 
 </details>
 
+--------
+
 <details>
-  <summary><strong>Q: How can we set up our Person class so that it has <code>name</code> and <code>age</code> attributes. We should be able to read and modify <code>name</code>, but only read <code>age</code>.</strong></summary>
+  <summary><strong>How can we set up our Person class so that it has <code>name</code> and <code>age</code> attributes. We should be able to read and modify <code>name</code>, but only read <code>age</code>.</strong></summary>
 
   ```rb
   class Person
@@ -41,10 +43,11 @@ Let's create a `Person` class together...
     attr_accessor :name
     attr_reader :age
 
-    # This method is run every time we call Person.new
-    def initialize(name, age)
-      @name = name
-      @age = age
+    # This is run every time we call Person.new
+    # Think of it as a "constructor method"
+    def initialize(initial_name, initial_age)
+      @name = initial_name
+      @age = initial_age
     end
   end
 
@@ -66,17 +69,19 @@ Let's create a `Person` class together...
 
 </details>
 
+--------
+
 <details>
-  <summary><strong>Q: Let's give our <code>Person</code> class a <code>say_name</code> method that prints his/her name to the console.</strong></summary>
+  <summary><strong>Let's give our <code>Person</code> class a <code>say_name</code> method that prints his/her name to the console.</strong></summary>
 
   ```rb
   class Person
     attr_accessor :name
     attr_reader :age
 
-    def initialize(name, age)
-      @name = name
-      @age = age
+    def initialize(initial_name, initial_age)
+      @name = initial_name
+      @age = initial_age
     end
 
     def say_name
@@ -93,8 +98,10 @@ Let's create a `Person` class together...
 
 </details>
 
+--------
+
 <details>
-  <summary><strong>Q: Now we want to keep track of how many people have been created using the <code>Person</code> class. What tools can we use to do this? How would we use them?</strong></summary>
+  <summary><strong>Now we want to keep track of how many people have been created using the <code>Person</code> class. What tools can we use to do this? How would we use them?</strong></summary>
 
   ```rb
   class Person
@@ -103,9 +110,9 @@ Let's create a `Person` class together...
     # We create a class variable to keep track of how many people have been created.
     @@people = 0
 
-    def initialize(name, age)
-      @name = name
-      @age = age
+    def initialize(initial_name, initial_age)
+      @name = initial_name
+      @age = initial_age
       # Whenever we create a new person, we want to increment `@@people`
       @@people += 1
     end
@@ -115,7 +122,7 @@ Let's create a `Person` class together...
     end
 
     # Here we're creating a method that retrieves the value of `@@people`
-    def self.get_number_of_people
+    def self.get_people
       return @@people
     end
   end
@@ -170,10 +177,6 @@ Instance and Class methods are both common, and okay to use. This is unlike clas
 
 ### Turn & Talk (5 minutes)
 
-3 minutes to discuss:
-
-Questions
----
 * Can we use instance variables in class methods?
 * Can we use class variables in an instance method?
 * Can we call instance methods in class methods?
