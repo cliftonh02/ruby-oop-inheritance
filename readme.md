@@ -73,6 +73,7 @@ Let's create a `Person` class...
 
   The different types of variables we can use are...
 
+
   #### Local
 
   * Written using plain vanilla names (e.g., `current_age`, `favorite_color`).
@@ -87,7 +88,7 @@ Let's create a `Person` class...
   * Very common in ruby.
 
   #### Class
-  
+
   * Start with 2 `@`s (e.g., `@@person_count`).
   * One copy shared between all instances.
   * Not very common. Over-use is considered bad practice.
