@@ -117,7 +117,9 @@ Let's create a `Person` class...
   ```
 
 </details>
-<br/>
+
+--------
+
 <details>
   <summary><strong>Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
   <br/>
