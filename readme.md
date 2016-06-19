@@ -73,18 +73,21 @@ Let's create a `Person` class...
 
   The different types of variables we can use are...
 
-  **Local**
+  #### Local
+
   * Written using plain vanilla names (e.g., `current_age`, `favorite_color`).
   * Limited in scope. Only accessible in the current method.
   * Used for temporary values in a class.
 
-  **Instance**
+  #### Instance
+
   * Start with an `@` (e.g., `@name`).
   * Used to store attributes for a given instance.
   * Can be used in any instance method in the class.
   * Very common in ruby.
 
-  **Class**
+  #### Class
+  
   * Start with 2 `@`s (e.g., `@@person_count`).
   * One copy shared between all instances.
   * Not very common. Over-use is considered bad practice.
