@@ -281,7 +281,7 @@ One benefit of Ruby is that it is much easier to determine what context we are w
 ---------
 
 <details>
-  <summary><strong>How could we go about using `self` in our `Person` class?</strong></summary>
+  <summary><strong>What are two ways we can use `self` in our `Person` class?</strong></summary>
 
   ```rb
   # In a class method definition. We've already done this...
@@ -389,8 +389,6 @@ bob.say_name
 
 ### You Do: Superheroes
 
-<!-- AM: I'm going to add to this exercise. -->
-
 Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
 
 ### You Do: Shopping List (Optional)
@@ -399,7 +397,34 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/ma
 
 ## What's Next?
 
-<!-- AM: Insert preview of ActiveRecord and how it employs classes and inheritance. -->
+When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
+
+[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/solution)
+
+Here's what an `Artist` model looks like in Tunr...
+
+```rb
+class Artist < ActiveRecord::Base
+  has_many :songs, dependent: :destroy
+end
+```
+
+> That doesn't mean we won't be putting anything else inside our class/model definitions. Later on we'll find that it's helpful to define helper methods that handle the "business logic" of our Rails applications.
+
+That simple class definition allows us to do things like...
+
+```rb
+Artist.all
+# => Returns all Artist instances in the database
+
+Artist.create(name: "Limp Bizkit")
+# => Create an Artist instance in the database.
+
+Artist.where(nationality: "Sweden")
+# => Returns all artits in the database with a `nationality` value of "Sweden"
+```
+
+> [There are plenty more where these came from...](https://github.com/ga-wdi-lessons/activerecord-intro#instance-vs-class-methods)
 
 ## Sample Questions
 
