@@ -48,10 +48,6 @@ Let's create a `Person` class...
 
   ```rb
   class Person
-    # This allows us to both read and write to the name and hunger_level attributes
-    attr_accessor :name
-    attr_reader :age
-
     # This is run every time we call Person.new
     # Think of it as a "constructor method"
     def initialize(initial_name, initial_age)
@@ -62,6 +58,63 @@ Let's create a `Person` class...
   ```
 
   > In place of the `attr` methods, we could also define getter and setter methods.
+
+</details>
+<br/>
+<details>
+  <summary><strong>We currently can't access a person's name in the REPL. How would we go about defining a method that allows us to do that?</strong></summary>
+
+  ```rb
+  class Person
+    def initialize(initial_name, initial_age)
+      @name = initial_name
+      @age = initial_age
+    end
+
+    def name
+      return @name
+    end
+  end
+  ```
+
+</details>
+<br/>
+<details>
+  <summary><strong>What about a method that allows us to redefine a person's name via the REPL?</strong></summary>
+
+  ```rb
+  class Person
+    def initialize(initial_name, initial_age)
+      @name = initial_name
+      @age = initial_age
+    end
+
+    def name
+      return @name
+    end
+
+    def name=(new_name)
+      @name = new_name
+    end
+  end
+  ```
+
+</details>
+<br/>
+<details>
+  <summary><strong>What's a shortcut we can use in place of these getter/setter methods?</strong></summary>
+
+  ```rb
+  class Person
+    attr_accessor :name
+    attr_reader :age
+
+    def initialize(initial_name, initial_age)
+      @name = initial_name
+      @age = initial_age
+    end
+  end
+  ```
 
 </details>
 <br/>
@@ -399,7 +452,7 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/ma
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
-[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/solution). Here's what an `Artist` model looks like...
+[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/solution) Here's what an `Artist` model looks like...
 
 ```rb
 class Artist < ActiveRecord::Base
