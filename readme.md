@@ -403,14 +403,6 @@ bob.say_name
 Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
 
 
-## Visibility
-
-<!-- AM: The placement of this seems kind of weird. Is this covered enough in the previous lesson? Or should I integrate it into the earlier review section? -->
-
-When discussing object-oriented programming, you may hear the term "visibility".  This refers to the availability, or scope, of a method. Who can call this method on the object?
-
-- Public: any one can call this method.  Public is default accessibility level for class methods.
-- Private and Protected: (not common) Not visible to other objects from other classes.  Control visibility to other instances of that Class, including descendants.
 
 ## What's Next?
 
@@ -435,6 +427,13 @@ When discussing object-oriented programming, you may hear the term "visibility".
 * **public**: methods available outside of the class.
 * **private**: methods available only within the class.
 * **protected**: methods available to only the class and its descendants.
+
+## Bonus: Visibility
+
+When discussing object-oriented programming, you may hear the term "visibility".  This refers to the availability, or scope, of a method. Who can call this method on the object?
+
+* Public: any one can call this method.  Public is default accessibility level for class methods.
+* Private and Protected: (not common) Not visible to other objects from other classes.  Control visibility to other instances of that Class, including descendants.
 
 ## Resources
 
