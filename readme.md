@@ -10,161 +10,163 @@ See also: https://github.com/ga-wdi-lessons/ruby-oop
 - Define inheritance in the context of OOP
 - Write a Ruby class that inherits from another
 
-## `self` in ruby
+## Framing
 
-In ruby, self is very similar to `this` in Javascript, it refers to the object
-the method was called on. Thankfully, however, it's much simpler in Ruby...
-because methods can't be called without context (i.e. no callbacks), there's no
-`bind` to worry about, `self` always equals the thing the method was called on.
+Today you started to learn about object-oriented programming in Ruby and how we can use classes to create a blueprint for objects containing related attributes and methods. Like constructor functions in Javascript, we can then use classes and the `.new` method to produce instances of these objects.
 
-### Exercise on `self` (15 minutes)
+This afternoon we're going to continue diving intro OOP in Ruby. In particular, we'll be taking a look at **inheritance** and how we can pass attributes and methods between classes.
 
-Pair up and consider the following example, specifically the `demonstrate_using_self`
-method. Talk with your partner for 7 minutes and discuss what effect each line
-will have, and which one is the best.
+But first, let's review and build upon some of the concepts that were introduced this morning...
 
-Feel free to run this code and play with it.
+## We Do: Let's Build A Class
 
-```ruby
-# person/self.rb
-class Person
-  attr_accessor :name
-  attr_reader :hunger_level
+Let's create a `Person` class together...
 
-  def initialize(initial_name, initial_hunger_level)
-    @name = initial_name
-    @hunger_level = initial_hunger_level
+<details>
+  <summary><strong>Q: How do we begin defining a <code>Person</code> class?</strong></summary>
+
+  ```rb
+  class Person
   end
+  ```
 
-  def hunger_level=(new_hunger_level)
-    if new_hunger_level < 0
-      @hunger_level = 0
-    else
-      @hunger_level = new_hunger_level
+</details>
+
+<details>
+  <summary><strong>Q: How can we set up our Person class so that it has <code>name</code> and <code>age</code> attributes. We should be able to read and modify <code>name</code>, but only read <code>age</code>.</strong></summary>
+
+  ```rb
+  class Person
+    # This allows us to both read and write to the name and hunger_level attributes
+    attr_accessor :name
+    attr_reader :age
+
+    # This method is run every time we call Person.new
+    def initialize(name, age)
+      @name = name
+      @age = age
     end
   end
 
-  def demonstrate_getting_name
-    # goal is to get our person's name in the best way possible
-    # GETTERS
-    puts @name
-    puts name
-    puts self.name
+  adrian = Person.new("Adrian", 29)
+
+  adrian.name
+  # => "Adrian"
+  adrian.name = "Dwayne 'The Rock' Johnson"
+  adrian.name
+  # =>"Dwayne 'The Rock' Johnson"
+
+  adrian.age
+  # => 29
+  adrian.age = 1
+  # => undefined method `age='
+  ```
+
+  > In place of the `attr` methods, we could also define getter and setter methods.
+
+</details>
+
+<details>
+  <summary><strong>Q: Let's give our <code>Person</code> class a <code>say_name</code> method that prints his/her name to the console.</strong></summary>
+
+  ```rb
+  class Person
+    attr_accessor :name
+    attr_reader :age
+
+    def initialize(name, age)
+      @name = name
+      @age = age
+    end
+
+    def say_name
+      puts "Hi, my name is " + @name + "."
+    end
   end
 
-  def demonstrate_setting_hunger_level
-    # goal is to set/update our person's hunger level in the best way possible
-    # SETTERS
-    @hunger_level = -10
-    hunger_level = -10
-    self.hunger_level = -10
-  end
-end
-```
+  adrian = Person.new("Adrian", 29)
+  adrian.say_name
+  # => "Hi, my name is Adrian."
+  ```
 
-You can find the answers in [this file](examples/person/self.rb).
+  > We could also use `self.name` in place of the instance variable `@name`. This is actually preferable. We'll explain why later...
 
-To sum up:
-1. Always use getter/setter methods inside the class instead of instance variables.
-  * exception: you can use instance variables inside getter / setter methods themselves
-2. To call a *getter* method inside a class, self is optional, e.g. both `self.name` AND `name` works
-3. To call a *setter* method inside a class, you MUST use self, e.g. `self.color = red`
+</details>
 
-## Class vs Instance Review (5 minutes)
+<details>
+  <summary><strong>Q: Now we want to keep track of how many people have been created using the <code>Person</code> class. What tools can we use to do this? How would we use them?</strong></summary>
 
-It's important to reiterate the difference between the class, and instances
-created from that class:
+  ```rb
+  class Person
+    attr_accessor :name
+    attr_reader :age
+    # We create a class variable to keep track of how many people have been created.
+    @@people = 0
 
-* A class' name is capitalized , e.g. `Person`, and is a template for objects of that class.
-* An instance is one specific object created using a class, e.g. `bob = Person.new("Bob", 10)`
+    def initialize(name, age)
+      @name = name
+      @age = age
+      # Whenever we create a new person, we want to increment `@@people`
+      @@people += 1
+    end
 
+    def say_name
+      puts "Hi, my name is " + @name + "."
+    end
 
-## Class vs Instance Methods and Variables (10 minutes)
-
-### Class vs Instance vs Local Variables
-
-Local variables:
-  * plain vanilla names, e.g. `current_age`, `favorite_color`
-  * only valid in the current method (limited scope)
-  * used for temporary values in a class
-
-Instance variables:
-  * start with an `@`, e.g. `@name`
-  * each instance gets it's own copy (used to store properties/attributes)
-  * can be used in any instance method in the class
-  * very common in ruby
-
-Class Vars:
-  * start with 2 `@`s, e.g `@@person_count`
-  * one copy shared between all instances
-  * **not very common**, over-use is considered bad practice
-
-### Class vs Instance Methods
-Ruby classes can define two types of methods, *instance* and *class* methods. So
-far, we've only written instance methods.
-
-* *instance methods* - called on on single instances
-* *class methods* - called on the class, deal with the set of objects.
-
-**Examples**
-
-* Instance
-  * `jill.speak`
-  * `jill.age = 41`
-  * `bob.speak`
-  * `ferrari.start`
-  * `gorilla.eat("banana")`
-* Class
-  * `Person.new`
-  * `Monkey.new`
-  * `Monkey.feed_all("banana")`
-
-Instance and Class methods are both common, and ok to use (unlike class
-variables, which should be used sparingly).
-
-### Defining class vs instance methods
-
-```ruby
-# person6.rb: person_count
-# from irb:
-#   load "examples/person/person6.rb"
-
-class Person
-  attr_accessor :name
-  @@person_count = 0 # class variable
-
-  def initialize(initial_name)
-    @@person_count += 1
-    @name = initial_name
+    # Here we're creating a method that retrieves the value of `@@people`
+    def self.get_number_of_people
+      return @@people
+    end
   end
 
-  # instance method, just like we've seen before
-  def introduction
-    puts "Hello, I'm #{name}, one of #{Person.person_count} people"
-  end
+  adrian = Person.new("Adrian", 29)
+  puts adrian.get_number_of_people
+  # => error
+  puts Person.get_number_of_people
+  # => 1
 
-  # class method, notice the `self` in the definition, which refers to the
-  # Person class
-  def self.person_count
-    return @@person_count
-  end
-end
+  keith = Person.new("Keith", 100)
+  puts Person.get_number_of_people
+  # => 2
+  ```
 
-Person.person_count   #=> 0
-jill = Person.new("Jill")
-Person.person_count   #=> 1
-bob = Person.new("Bob")
-Person.person_count   #=> 2
-```
+  > We could also use `self.name` in place of the instance variable `@name`. This is actually preferable. We'll explain why later...
 
-### You Do
+</details>
 
-- add support for `matt.person_count`
-- add support for asking if a person is old enough to vote.
+### Classes vs. Instances
 
-### Code Walkthrough(10 minutes)
+It's important to reiterate the difference between the class and instances
+created from that class.
+* A class' name is capitalized (e.g., `Person`) and is a template for objects of that class.
+* An instance is one specific object created using a class (e.g. `bob = Person.new("Bob", 10)`).
 
-**[Application Config Class in Ruby](https://github.com/ga-dc/ruby_application_configuration)**
+### Variables: Class vs. Instance vs. Local
+
+#### Local
+* Written using plain vanilla names (e.g., `current_age`, `favorite_color`).
+* Limited in scope. Only accessible in the current method.
+* Used for temporary values in a class.
+
+#### Instance
+* Start with an `@` (e.g., `@name`).
+* Used to store attributes for a given instance.
+* Can be used in any instance method in the class.
+* Very common in ruby.
+
+#### Class
+* Start with 2 `@`s (e.g., `@@person_count`).
+* One copy shared between all instances.
+* Not very common. Over-use is considered bad practice.
+
+### Methods: Class vs. Instance
+
+Ruby classes can define two types of methods...
+* Instance: called on on single instances.
+* Class: called on the class, deal with the set of objects.
+
+Instance and Class methods are both common, and okay to use. This is unlike class variables, which should be used sparingly.
 
 ### Turn & Talk (5 minutes)
 
@@ -185,6 +187,89 @@ Questions
   class wouldn't know which to choose.
 * Yes, the method is shared, and can be used by all instances.
 
+## Refactoring our Person class with `self`
+
+### What is `self`?
+
+<details>
+  <summary><strong>Q: What does `self` mean in Ruby?</strong></summary>
+
+  > It contains the current instance of an object.
+
+</details>
+
+<details>
+  <summary><strong>Q: What is the equivalent of `self` in Javascript?</strong></summary>
+
+  > `this`
+
+</details>
+
+One benefit on Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
+
+### Exercise on `self` (15 minutes)
+
+Consider the below `Person` class. In both the `get_name` and `set_hunger_level` instance methods, we have written three ways to reference attributes stored in a class.
+
+With a partner, consider the following questions for each attribute reference...
+* Does it successfully get/set the value?
+* If it does, do you think it is the best way to do get/set that attribute?
+
+```ruby
+# person/self.rb
+class Person
+  attr_accessor :name
+  attr_reader :hunger_level
+
+  def initialize(initial_name, initial_hunger_level)
+    @name = initial_name
+    @hunger_level = initial_hunger_level
+  end
+
+  def hunger_level=(new_hunger_level)
+    if new_hunger_level < 0
+      @hunger_level = 0
+    else
+      @hunger_level = new_hunger_level
+    end
+  end
+
+  def get_name
+    # goal is to get our person's name in the best way possible
+    puts @name
+    puts name
+    puts self.name
+  end
+
+  def set_hunger_level
+    # goal is to set/update our person's hunger level in the best way possible
+    @hunger_level = -10
+    hunger_level = -10
+    self.hunger_level = -10
+  end
+end
+```
+
+> You can find the answers in [this file](examples/person/self.rb).
+
+To sum up:
+1. Always use getter/setter methods inside the class instead of instance variables.
+  * exception: you can use instance variables inside getter / setter methods themselves
+2. To call a *getter* method inside a class, self is optional, e.g. both `self.name` AND `name` works
+3. To call a *setter* method inside a class, you MUST use self, e.g. `self.color = red`
+
+### You Do: Keep Building `Person`
+
+Make the following additions to our `Person` class...
+
+* Add support for `adrian.person_count`
+* Add support for asking if a person is old enough to vote.
+
+### Code Walkthrough (10 minutes)
+
+**[Application Config Class in Ruby](https://github.com/ga-dc/ruby_application_configuration)**
+
+## Break
 
 ## Inheritance
 
@@ -245,9 +330,12 @@ puts "Bob hunger level: #{bob.hunger_level}"
 
 ### You Do: Inheritance
 
-- Make a sleepy person, who sleeps through the introduction.
-- Make a baby, who can only say "Dada" and is always hungry (hunger_level never reaches 0)
+* Make a sleepy person, who sleeps through the introduction.
+* Make a baby, who can only say "Dada" and is always hungry (hunger_level never reaches 0)
 
+### You Do: Superheroes
+
+Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
 
 
 ## Visibility
@@ -260,10 +348,9 @@ When discussing object-oriented programming, you may hear the term "visibility".
 
 ## Sample Questions
 
-- Explain the use of self in Ruby
-- Explain the difference between local, instance and class variables
-- Define and differentiate between class and instance methods
--
+* Explain the use of self in Ruby.
+* Explain the difference between local, instance and class variables.
+* Define and differentiate between class and instance methods.
 
 ## Vocabulary
 
@@ -279,6 +366,6 @@ When discussing object-oriented programming, you may hear the term "visibility".
 
 ## Resources
 
-- Getters and Setters: http://andrewsunglaekim.github.io/Get-set-ruby/
-- Visibility http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods
-- Private/Protected http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html
+* [Getters and Setters](http://andrewsunglaekim.github.io/Get-set-ruby/)
+* [Visibility](http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods)
+* [Private/Protected](http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html)
