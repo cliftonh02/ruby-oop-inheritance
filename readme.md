@@ -16,7 +16,7 @@ This afternoon we're going to continue diving intro OOP in Ruby. In particular, 
 
 But first, let's review and build upon some of the concepts that were introduced this morning...
 
-## We Do: Let's Build A Class
+## We Do: Let's Build A Class (40 minutes / 0:40)
 
 Let's create a `Person` class...
 
@@ -369,7 +369,9 @@ Sometimes we don't want to go through the trouble of creating a higher class lik
 
 One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
 
-### You Do: Keep Building `Person`
+### You Do: Keep Building `Person` (15 minutes / 0:55)
+
+> 10 minutes exercise. 5 minutes review.
 
 Make the following additions to our `Person` class...
 
@@ -377,9 +379,9 @@ Make the following additions to our `Person` class...
 * A method that counts the number of `Person` instances that have been created.
 * A method that returns all `Person` instances that begin with a certain letter. This letter should be passed in as an argument.
 
-## Break
+## Break (10 minutes / 1:05)
 
-## Inheritance
+## Inheritance (15 minutes / 1:20)
 
 Just like we get traits from our parents, we can use a feature called **inheritance** to create multiple classes (children) that share properties and methods from their parents.
 
@@ -436,7 +438,9 @@ bob.say_name
 # => "HEY YOU, MY NAME IS BOB!"
 ```
 
-### You Do: Inheritance
+### You Do: Inheritance (15 minutes / 1:35)
+
+> 10 minutes exercise. 5 minutes review.
 
 * Create a `QuietPerson` class that has their own version of `say_name`.
 * Create a `VeryLoudPerson` class that...
@@ -445,15 +449,21 @@ bob.say_name
   3. Has their own loud version of the `say_age` method.
 * Create a `TwoHeadedPerson` class that shares the same methods as `Person` but also has a second name attribute (for the other head).
 
-### You Do: Superheroes
+### You Do: Superheroes (20 minutes / 1:55)
+
+> 15 minutes exercise. 5 minutes review.
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
+
+> If you finish early, get started on the optional Shopping List exercise.
 
 ### You Do: Shopping List (Optional)
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/master/readme.md) and follow the instructions in the readme.
 
-## What's Next?
+## Break (10 minutes / 2:05)
+
+## What's Next? (5 minutes / 2:10)
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
@@ -481,6 +491,8 @@ Artist.where(nationality: "Sweden")
 ```
 
 > [There are plenty more where these came from...](https://github.com/ga-wdi-lessons/activerecord-intro#instance-vs-class-methods)
+
+## Closing/Questions
 
 ## Sample Questions
 
