@@ -449,11 +449,11 @@ bob.say_name
   3. Has their own loud version of the `say_age` method.
 * Create a `TwoHeadedPerson` class that shares the same methods as `Person` but also has a second name attribute (for the other head).
 
-### You Do: Superheroes (20 minutes / 1:55)
+### You Do: Codebar (25 minutes / 2:00)
 
-> 15 minutes exercise. 5 minutes review.
+> 20 minutes exercise. 5 minutes review.
 
-Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follow the instructions in the readme.
+Clone down [this repo](https://github.com/ga-wdi-exercises/codebar) and follow the instructions in the readme.
 
 > If you finish early, get started on the optional Shopping List exercise.
 
@@ -461,9 +461,9 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/superheros) and follo
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/master/readme.md) and follow the instructions in the readme.
 
-## Break (10 minutes / 2:05)
+## Break (10 minutes / 2:10)
 
-## What's Next? (5 minutes / 2:10)
+## What's Next? (5 minutes / 2:15)
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
