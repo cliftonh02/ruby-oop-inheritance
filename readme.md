@@ -337,10 +337,11 @@ One benefit of Ruby is that it is much easier to determine what context we are w
 
 > 10 minutes exercise. 5 minutes review.
 
-Make the following additions to our `Person` class...
+Make the following additions to our `Person` class. It is up to you to determine whether you should use an instance or class method.
 
 * A method that checks to see if a `Person` is old enough to vote.
 * A method that counts the number of `Person` instances that have been created.
+* A method that compares two people and determines which one is older.
 * A method that returns all `Person` instances that begin with a certain letter. This letter should be passed in as an argument.
 
 ## Break (10 minutes / 1:05)
