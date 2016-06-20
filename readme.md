@@ -57,8 +57,6 @@ Let's create a `Person` class...
   end
   ```
 
-  > In place of the `attr` methods, we could also define getter and setter methods.
-
 </details>
 <br/>
 <details>
