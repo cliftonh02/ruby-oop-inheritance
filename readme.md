@@ -420,6 +420,61 @@ bob.say_name
 # => "HEY YOU, MY NAME IS BOB!"
 ```
 
+### Inheritance & Class Variables
+
+Earlier we mentioned that we tend not to use class variables because of how they are affected by inheritance. Let's illustrate a potential issue using `Person` and `LoudPerson`...
+
+```rb
+class Person
+  attr_accessor :name
+  attr_reader :age
+  @@people = []
+  @@class_name = "Person"
+
+  def initialize(initial_name, initial_age)
+    @name = initial_name
+    @age = initial_age
+    @@people.push(self)
+  end
+
+  def get_class_name
+    puts @@class_name
+  end
+
+  # We're hiding all the methods we created earlier...
+end
+
+class LoudPerson < Person
+  @@class_name = "LoudPerson"
+  def say_name
+    puts "HEY YOU, MY NAME IS #{@name.upcase}!"
+  end
+
+  def get_class_name
+    puts @@class_name
+  end
+end
+```
+
+Note that we have given both `Person` and `LoudPerson` a class variable called `@@class_name`. Each class has their own value for that variable. We've also given each class a `get_class_name` method to access those values.
+
+Let's see what happens when we try to access those values.
+
+```rb
+LoudPerson.get_class_name
+# => "LoudPerson"
+
+Person.get_class_name
+# => "LoudPerson"
+```
+
+<details>
+  <summary><strong>What's the issue here?</summary>
+
+  > When parent and child classes share a class variable of the same name, the value of the child class variable overrides that of the parent.
+
+</details>
+
 ### You Do: Inheritance (15 minutes / 1:35)
 
 > 10 minutes exercise. 5 minutes review.
