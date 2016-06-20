@@ -10,11 +10,11 @@
 
 ## Framing
 
-[This morning](https://github.com/ga-wdi-lessons/ruby-oop) you started to learn about object-oriented programming in Ruby and how we can use classes to create a blueprint for objects containing related attributes and methods. Like constructor functions in Javascript, we can then use classes and the `.new` method to produce instances of these objects.
+[This morning](https://github.com/ga-wdi-lessons/ruby-oop) you started to learn about object-oriented programming in Ruby and how we can use classes to organize our code into objects.
 
-This afternoon we're going to continue diving intro OOP in Ruby. In particular, we'll be taking a look at **inheritance** and how we can pass attributes and methods between classes.
-
-But first, let's review and build upon some of the concepts that were introduced this morning...
+This afternoon we will focus on two things...
+  1. Reviewing what you learned this morning by building a class together.
+  2. Introduce the concept of **inheritance** and how classes can pass attributes and methods to each other.
 
 ## We Do: Let's Build A Class (40 minutes / 0:40)
 
