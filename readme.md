@@ -63,11 +63,6 @@ Let's create a `Person` class...
   <summary><strong>Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
   <br/>
 
-  `@` indicates that we are defining an instance variable, which is a value that is accessible anywhere inside a given instance of a class.
-
-  The different types of variables we can use are...
-
-
   **Local:** normal variable name, limited in scope and used for temporary values.
 
   **Instance:** starts with `@`, used to store attributes for a given instance and can be used in any instance method.
