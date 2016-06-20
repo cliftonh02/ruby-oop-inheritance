@@ -452,7 +452,7 @@ Person.get_class_name
 ```
 
 <details>
-  <summary><strong>What's the issue here?</summary>
+  <summary><strong>What's the issue here?</strong></summary>
 
   > When parent and child classes share a class variable of the same name, the value of the child class variable overrides that of the parent.
 
