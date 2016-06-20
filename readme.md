@@ -244,11 +244,11 @@ Let's create a `Person` class...
   puts adrian.get_people
   # => error
   puts Person.get_people
-  # => 1
+  # => [adrian]
 
   keith = Person.new("Keith", 100)
   puts Person.get_people
-  # => 2
+  # => [adrian, keith]
   ```
 
   > We could also use `self.name` in place of the instance variable `@name`. This is actually preferable. We'll explain why later...
