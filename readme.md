@@ -189,7 +189,7 @@ Let's create a `Person` class...
   * **Instance:** called on on single instances.
   * **Class:** called on the class, deal with the set of objects.
 
-  Instance and Class methods are both common and okay to use. This is unlike class variables, which should be used sparingly.
+  > Instance and Class methods are both common and okay to use. This is unlike class variables, which should be used sparingly.
 
 </details>
 
