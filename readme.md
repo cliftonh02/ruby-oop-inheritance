@@ -62,6 +62,46 @@ Let's create a `Person` class...
 </details>
 <br/>
 <details>
+  <summary><strong>Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
+  <br/>
+
+  `@` indicates that we are defining an instance variable, which is a value that is accessible anywhere inside a given instance of a class.
+
+  The different types of variables we can use are...
+
+
+  #### Local
+
+  - Written using plain vanilla names (e.g., `current_age`, `favorite_color`).
+  - Limited in scope. Only accessible in the current method.
+  - Used for temporary values in a class.
+
+  #### Instance
+
+  - Start with an `@` (e.g., `@name`).
+  - Used to store attributes for a given instance.
+  - Can be used in any instance method in the class.
+  - Very common in ruby.
+
+  #### Class
+
+  - Start with 2 `@`s (e.g., `@@person_count`).
+  - One copy shared between all instances.
+  - Not very common. Over-use is considered bad practice.
+
+</details>
+<br/>
+<details>
+  <summary><strong>How can we generate an instance of this <code>Person</code> class?</strong></summary>
+
+  ```rb
+  adrian = Person.new("Adrian", 29)
+  ```
+</details>
+
+--------
+
+<details>
   <summary><strong>We currently can't access a person's name in the REPL. How would we go about defining a method that allows us to do that?</strong></summary>
 
   ```rb
@@ -127,64 +167,6 @@ Let's create a `Person` class...
       @age = initial_age
     end
   end
-  ```
-
-</details>
-
---------
-
-<details>
-  <summary><strong>Why did we place an <code>@</code> in front of our variables? How else could we have written our variables?</strong></summary>
-  <br/>
-
-  `@` indicates that we are defining an instance variable, which is a value that is accessible anywhere inside a given instance of a class.
-
-  The different types of variables we can use are...
-
-
-  #### Local
-
-  - Written using plain vanilla names (e.g., `current_age`, `favorite_color`).
-  - Limited in scope. Only accessible in the current method.
-  - Used for temporary values in a class.
-
-  #### Instance
-
-  - Start with an `@` (e.g., `@name`).
-  - Used to store attributes for a given instance.
-  - Can be used in any instance method in the class.
-  - Very common in ruby.
-
-  #### Class
-
-  - Start with 2 `@`s (e.g., `@@person_count`).
-  - One copy shared between all instances.
-  - Not very common. Over-use is considered bad practice.
-
-</details>
-<br/>
-<details>
-  <summary><strong>How can we generate an instance of this <code>Person</code> class?</strong></summary>
-
-  ```rb
-  adrian = Person.new("Adrian", 29)
-  ```
-</details>
-<br/>
-<details>
-  <summary><strong>How do we go about accessing/modifying a <code>Person</code> instance's <code>name</code> and <code>age</code> attributes?</strong></summary>
-
-  ```rb
-  adrian.name
-  # => "Adrian"
-  adrian.name = "Dwayne 'The Rock' Johnson"
-  adrian.name
-  # =>"Dwayne 'The Rock' Johnson"
-
-  adrian.age
-  # => 29
-  adrian.age = 1
-  # => undefined method `age='
   ```
 
 </details>
