@@ -16,9 +16,9 @@ This afternoon we will focus on two things...
   1. Reviewing what you learned this morning by building a class together.
   2. Introduce the concept of **inheritance** and how classes can pass attributes and methods to each other.
 
-## We Do: Let's Build A Class (40 minutes / 0:40)
+## We Do: Let's Build A Class (2:30 - 3:10, 40 minutes)
 
-Let's create a `Person` class...
+Let's collaboratively create a `Person` class!
 
 --------
 
@@ -169,7 +169,7 @@ Let's create a `Person` class...
     end
 
     def say_name
-      puts "Hi, my name is " + @name + "."
+      puts "Hi, my name is #{@name}."
     end
   end
 
@@ -213,7 +213,7 @@ Let's create a `Person` class...
     end
 
     def say_name
-      puts "Hi, my name is " + @name + "."
+      puts "Hi, my name is  #{@name}."
     end
 
     # Here we're creating a method that retrieves the value of `@@people`
@@ -239,16 +239,23 @@ Let's create a `Person` class...
 
 ### Common Practice: No Class Variables
 
-Developers tend not to use class variables. As we'll see later in this lesson, class variables might not work as intended when inheritance is brought into the mix.
+Developers tend to avoid using class variables (e.g. `@@some_variable`). As we'll see later in this lesson, class variables often will not work as intended when inheritance is brought into the mix, or introduce unnecessary complications.
 
-Instead, a more common practice is to create a higher-level class that handles the same functionality. For example, in the case of `Person`, we could have a `Group` class. Each instance of `Group` would have an instance variable `@people` which would contain each instance of `Person`.
+Instead, a more common practice is to create a **helper class** that introduces the same functionality that a class variable would, but without headaches introduced by inheritance. From [wikipedia](https://en.wikipedia.org/wiki/Helper_class):
+> In object-oriented programming, a helper class is used to assist in providing some functionality, which isn't the main goal of the application or class in which it is used
+
+For example, in the case of `Person`, we could have a `Group` class. Each instance of `Group` would have an instance variable `@people` which would contain each instance of `Person`.
+
+
 
 ```rb
 class Group
   attr_accessor :people
 
-  def initialize(initial_people=[])
-    @people = initial_people
+  def initialize(initial_people)
+    @people = []
+    # concat is a method that joins (concatenates) arrays
+    @people.concat(initial_people)
   end
 
   def add_person(person)
@@ -266,7 +273,7 @@ class Person
   end
 
   def say_name
-    puts "Hi, my name is " + @name + "."
+    puts "Hi, my name is #{@name}."
   end
 end
 ```
@@ -405,7 +412,7 @@ bob.say_name
 
 ### Inheritance & Class Variables
 
-Earlier we mentioned that we tend not to use class variables because of how they are affected by inheritance. Let's illustrate a potential issue using `Person` and `LoudPerson`...
+Earlier we mentioned that we tend to avoid using class variables because of how they are affected by inheritance. Let's illustrate a potential issue using `Person` and `LoudPerson`...
 
 ```rb
 class Person
@@ -497,7 +504,7 @@ end
 
 > That doesn't mean we won't be putting anything else inside our class/model definitions. Later on we'll find that it's helpful to define helper methods that handle the "business logic" of our Rails applications.
 
-That simple class definition allows us to do things like...
+That simple class definition (`ActiveRecord::Base`) allows us to do things like...
 
 ```rb
 Artist.all
@@ -539,3 +546,81 @@ Artist.where(nationality: "Sweden")
 * [Getters and Setters](http://andrewsunglaekim.github.io/Get-set-ruby/)
 * [Visibility](http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods)
 * [Private/Protected](http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html)
+
+## Extra Material: Modules
+
+Classes are great for packaging up related methods: all my User-related methods are in one place.
+
+But let's say my app involves translating English into other languages: I want a "translate-to-French" method, and one for Spanish, German, and so on.
+
+Putting those into a class doesn't really make semantic sense. A class should be a blueprint for an object. Translator methods don't really "belong" to a specific object: I may want to use them with my Users, or with blog posts, or with product descriptions.
+
+A **module** is a lot like a class. The biggest difference is semantic: **Modules are just bundles of related methods. They're not a blueprint for an object.** You may have heard about **mixins**; in Ruby, **modules** are how **mixins** are implemented.
+
+> The module we've explored most recently is **enumerables**. Out-of-the-box, Ruby comes with a big old `Enumerable` module that has lots of handy methods inside it, like `each`.
+
+### Try out modules
+
+Copy and paste this snippet into your REPL:
+
+```rb
+module TranslatorMethods
+  def frenchify(input)
+    return input + " omelette du fromage"
+  end
+
+  def spanishify(input)
+    return input + " donde esta la biblioteca"
+  end
+
+  def germanify(input)
+    return input + " schadenfreude kindergarten"
+  end
+end
+
+class User
+
+  include TranslatorMethods
+  attr_accessor :nationality
+
+  def initialize(nationality)
+    @nationality = nationality.downcase
+  end
+
+  def greet
+    standard = "Hello"
+    case @nationality
+    when "french"
+      puts frenchify(standard)
+    when "spanish"
+      puts spanishify(standard)
+    when "german"
+      puts germanify(standard)
+    else
+      puts standard
+    end
+  end
+
+end
+```
+
+Now, copy and paste these lines one at a time:
+
+```rb
+user = User.new("French")
+user.greet
+user.nationality = "German"
+user.greet
+```
+
+It's just as if we had copy-and-pasted all those "translator" methods right into the `User` class.
+
+<details>
+<summary>What Javascript things have we seen that would make a good Ruby module? (That is: where have we seen big bundles of methods in Javascript?)</summary>
+jQuery
+</details>
+
+<details>
+<summary>Unrelated: Why does it say `@nationality = nationality.downcase`? What's the utility of the `downcase`?</summary>
+Ruby is case-sensitive. Without this, if a user entered "FRENCH" or "French", it wouldn't register it as being the same as "french".
+</details>
