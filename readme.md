@@ -252,10 +252,8 @@ For example, in the case of `Person`, we could have a `Group` class. Each instan
 class Group
   attr_accessor :people
 
-  def initialize(initial_people)
-    @people = []
-    # concat is a method that joins (concatenates) arrays
-    @people.concat(initial_people)
+  def initialize(initial_people = [])
+    @people = initial_people
   end
 
   def add_person(person)
