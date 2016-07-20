@@ -340,7 +340,7 @@ Sometimes we don't want to go through the trouble of creating a higher class lik
 
 One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
 
-### You Do: Keep Building `Person` (15 minutes / 0:55)
+### You Do: Keep Building `Person` (3:10 - 3:25, 15 minutes)
 
 > 10 minutes exercise. 5 minutes review.
 
@@ -351,9 +351,9 @@ Make the following additions to our `Person` class. It is up to you to determine
 * A method that compares two people and determines which one is older.
 * A method that returns all `Person` instances that begin with a certain letter. This letter should be passed in as an argument.
 
-## Break (10 minutes / 1:05)
+## Break (3:25 - 3:35, 10 minutes)
 
-## Inheritance (15 minutes / 1:20)
+## Inheritance (3:35 - 3:50, 15 minutes)
 
 Just like we get traits from our parents, we can use a feature called **inheritance** to create multiple classes (children) that share properties and methods from their parents.
 
@@ -465,7 +465,7 @@ Person.get_class_name
 
 </details>
 
-### You Do: Inheritance (15 minutes / 1:35)
+### You Do: Inheritance (3:50 - 4:05, 15 minutes)
 
 > 10 minutes exercise. 5 minutes review.
 
@@ -476,7 +476,7 @@ Person.get_class_name
   3. Has their own loud version of the `say_age` method.
 * Create a `TwoHeadedPerson` class that shares the same methods as `Person` but also has a second name attribute (for the other head).
 
-### You Do: Codebar (25 minutes / 2:00)
+### You Do: Codebar (4:30, 25 minutes)
 
 > 20 minutes exercise. 5 minutes review.
 
@@ -488,9 +488,9 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/codebar) and follow t
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/master/readme.md) and follow the instructions in the readme.
 
-## Break (10 minutes / 2:10)
+## Break (4:30 - 4:40, 10 minutes)
 
-## What's Next? (5 minutes / 2:15)
+## What's Next? (4:40 - 4:45, 5 minutes)
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
@@ -514,12 +514,12 @@ Artist.create(name: "Limp Bizkit")
 # => Create an Artist instance in the database.
 
 Artist.where(nationality: "Sweden")
-# => Returns all artits in the database with a `nationality` value of "Sweden"
+# => Returns all artists in the database with a `nationality` value of "Sweden"
 ```
 
 > [There are plenty more where these came from...](https://github.com/ga-wdi-lessons/activerecord-intro#instance-vs-class-methods)
 
-## Closing/Questions
+## Closing/Questions (4:45 - 5:00, 15 minutes)
 
 ## Sample Questions
 
