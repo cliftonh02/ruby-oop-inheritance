@@ -44,7 +44,7 @@ Let's collaboratively create a `Person` class!
 --------
 
 <details>
-  <summary><strong>How can we set up our Person class so that it has <code>name</code> and <code>age</code> attributes. We should be able to read and modify <code>name</code>, but only read <code>age</code>.</strong></summary>
+  <summary><strong>How can we set up our Person class so that it has <code>name</code> and <code>age</code> attributes.</strong></summary>
 
   ```rb
   class Person
@@ -137,7 +137,7 @@ Let's collaboratively create a `Person` class!
 </details>
 <br/>
 <details>
-  <summary><strong>What's a shortcut we can use in place of these getter/setter methods?</strong></summary>
+  <summary><strong>What are shortcuts we can use in place of these getter/setter methods? We should be able to read and modify <code>name</code>, but only read <code>age</code>.</strong></summary>
 
   ```rb
   class Person
