@@ -117,20 +117,21 @@ Let's collaboratively create a `Person` class!
       @age = initial_age
     end
 
-    def name
+    def get_name
       return @name
     end
 
-    def name=(new_name)
-      @name = new_name
+    def set_name(name)
+     @name = name
     end
+
   end
   ```
 
   ```rb
   adrian = Person.new("Adrian", 29)
-  adrian.name = "Chad"
-  adrian.name
+  adrian.get_name = "Chad"
+  adrian.set_name
   # => "Chad"
   ```
 
