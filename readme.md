@@ -96,13 +96,13 @@ Let's collaboratively create a `Person` class!
     def get_name
       return @name
     end
-    
+
   end
   ```
 
   ```rb
   adrian = Person.new("Adrian", 29)
-  adrian.name
+  adrian.get_name
   # => "Adrian"
   ```
 
@@ -347,9 +347,9 @@ One benefit of Ruby is that it is much easier to determine what context we are w
 Make the following additions to our `Person` class. It is up to you to determine whether you should use an instance or class method.
 
 * A method that checks to see if a `Person` is old enough to vote.
+* A method that returns the number of `Person` instances that have been created.
 * A method that counts the number of `Person` instances that have been created.
 * A method that compares two people and determines which one is older.
-* A method that returns all `Person` instances that begin with a certain letter. This letter should be passed in as an argument.
 
 ## Break (3:25 - 3:35, 10 minutes)
 
