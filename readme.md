@@ -451,10 +451,10 @@ Note that we have given both `Person` and `LoudPerson` a class variable called `
 Let's see what happens when we try to access those values.
 
 ```rb
-LoudPerson.get_class_name
+bob.get_class_name
 # => "LoudPerson"
 
-Person.get_class_name
+jill.get_class_name
 # => "LoudPerson"
 ```
 
