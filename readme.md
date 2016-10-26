@@ -93,9 +93,10 @@ Let's collaboratively create a `Person` class!
       @age = initial_age
     end
 
-    def name
+    def get_name
       return @name
     end
+    
   end
   ```
 
