@@ -10,13 +10,13 @@
 
 ## Framing
 
-[Yesterday afternoon](https://github.com/ga-wdi-lessons/ruby-oop) you started to learn about object-oriented programming in Ruby and how we can use classes to organize our code into objects.
+[This morning (link to danny's repo)]() you started to learn about object-oriented programming in Ruby and how we can use classes to organize our code into objects.
 
-This morning we will focus on two things...
+This afternoon we will focus on two things...
   1. Reviewing what you learned this morning by building a class together.
   2. Introduce the concept of **inheritance** and how classes can pass attributes and methods to each other.
 
-## We Do: Let's Build A Class (2:30 - 3:10, 40 minutes)
+## We Do: Let's Build A Class (40 minutes / 0:40)
 
 Let's collaboratively create a `Person` class!
 
@@ -27,7 +27,7 @@ Let's collaboratively create a `Person` class!
   <br/>
 
   A class is a blueprint. An instance is an object generated from that blueprint.
-  * A class' name is capitalized (e.g., `Person`) and is a template for objects of that class.
+  * A class name is capitalized (e.g. `Person`) and is a template for objects of that class.
   * An instance is one specific object created using a class (e.g. `bob = Person.new("Bob", 10)`).
 </details>
 <br/>
@@ -77,7 +77,7 @@ Let's collaboratively create a `Person` class!
   <summary><strong>How can we generate an instance of this <code>Person</code> class?</strong></summary>
 
   ```rb
-  adrian = Person.new("Adrian", 29)
+  daenerys = Person.new("Daenerys", 16)
   ```
 </details>
 
@@ -101,9 +101,9 @@ Let's collaboratively create a `Person` class!
   ```
 
   ```rb
-  adrian = Person.new("Adrian", 29)
-  adrian.get_name
-  # => "Adrian"
+  daenerys = Person.new("Daenerys", 16)
+  daenerys.get_name
+  # => "Daenerys"
   ```
 
 </details>
@@ -130,10 +130,10 @@ Let's collaboratively create a `Person` class!
   ```
 
   ```rb
-  adrian = Person.new("Adrian", 29)
-  adrian.get_name = "Chad"
-  adrian.set_name
-  # => "Chad"
+  daenerys = Person.new("Daenerys", 16)
+  daenerys.get_name = "Jorah"
+  daenerys.set_name
+  # => "Jorah"
   ```
 
 </details>
@@ -175,9 +175,9 @@ Let's collaboratively create a `Person` class!
     end
   end
 
-  adrian = Person.new("Adrian", 29)
-  adrian.say_name
-  # => "Hi, my name is Adrian."
+  daenerys = Person.new("Daenerys", 16)
+  daenerys.say_name
+  # => "Hi, my name is Daenerys."
   ```
 
 </details>
@@ -224,15 +224,15 @@ Let's collaboratively create a `Person` class!
     end
   end
 
-  adrian = Person.new("Adrian", 29)
-  puts adrian.get_people
+  daenerys = Person.new("Daenerys", 16)
+  puts daenerys.get_people
   # => error
   puts Person.get_people
-  # => [adrian]
+  # => [daenerys]
 
-  keith = Person.new("Keith", 100)
+  jon = Person.new("Jon", 17)
   puts Person.get_people
-  # => [adrian, keith]
+  # => [daenerys, jon]
   ```
 
   > We could also use `self.name` in place of the instance variable `@name`. This is actually preferable. We'll explain why later...
@@ -280,15 +280,15 @@ end
 
 ```rb
 # Create instances of Group and Person
-instructors = Group.new
-adrian = Person.new("Adrian", 29)
+targaryens = Group.new
+daenerys = Person.new("Daenerys", 16)
 
-# Keep track of how many instructors there are by adding `adrian` (Person) to `instructors` (Group)
-instructors.add_person(adrian)
+# Keep track of how many Targaryens there are by adding `daenerys` (Person) to `targaryens` (Group)
+targaryens.add_person(daenerys)
 
-# To check how many instructors there are we can run this...
-instructors.people
-# => [adrian]
+# To check how many Targaryens there are we can run this...
+targaryens.people
+# => [daenerys]
 ```
 
 We could also add other attributes and methods to the `Group` class. It doesn't have to just be a container for instances of the `Person` class.
@@ -297,7 +297,7 @@ To illustrate the use of class variables and methods, we're going to move forwar
 
 ### When Might You Use Class Variables?
 
-Sometimes we don't want to go through the trouble of creating a higher class like `Group`. This is especially the case when dealing with application configuration values. [Take a look at this SASS example...](https://github.com/sass/sass/blob/bbc7663c1e24ed7f8e7014f356af1f6c4209aac9/lib/sass/version.rb#L48-L82)
+Sometimes we don't want to go through the trouble of creating a higher class like `Group`. This is especially the case when dealing with application configuration values.
 
 ### Self
 
@@ -340,7 +340,7 @@ Sometimes we don't want to go through the trouble of creating a higher class lik
 
 One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
 
-### You Do: Keep Building `Person` (3:10 - 3:25, 15 minutes)
+### You Do: Keep Building `Person` (15 minutes / 0:55)
 
 > 10 minutes exercise. 5 minutes review.
 
@@ -351,9 +351,9 @@ Make the following additions to our `Person` class. It is up to you to determine
 * A method that counts the number of `Person` instances that have been created.
 * A method that compares two people and determines which one is older.
 
-## Break (3:25 - 3:35, 10 minutes)
+## Break (10 minutes / 1:05)
 
-## Inheritance (3:35 - 3:50, 15 minutes)
+## Inheritance (15 minutes / 1:20)
 
 Just like we get traits from our parents, we can use a feature called **inheritance** to create multiple classes (children) that share properties and methods from their parents.
 
@@ -395,19 +395,19 @@ class LoudPerson < Person
 end
 
 jill = Person.new("Jill", 10)
-bob = LoudPerson.new("Bob", 20)
+jack = LoudPerson.new("Jack", 20)
 
 # Both `say_age` methods produce the same result since it was not overwritten in the `LoudPerson` class.
 jill.say_age
 # => "I am 10 years old."
-bob.say_age
+jack.say_age
 # => "I am 20 years old."
 
 # The `say_name` methods produce different results because we overwrote the original in the `LoudPerson` class.
 jill.say_name
 # => "My name is Jill."
-bob.say_name
-# => "HEY YOU, MY NAME IS BOB!"
+jack.say_name
+# => "HEY YOU, MY NAME IS JACK!"
 ```
 
 ### Inheritance & Class Variables
@@ -451,7 +451,7 @@ Note that we have given both `Person` and `LoudPerson` a class variable called `
 Let's see what happens when we try to access those values.
 
 ```rb
-bob.get_class_name
+jack.get_class_name
 # => "LoudPerson"
 
 jill.get_class_name
@@ -465,7 +465,7 @@ jill.get_class_name
 
 </details>
 
-### You Do: Inheritance (3:50 - 4:05, 15 minutes)
+### You Do: Inheritance (15 minutes / 1:35)
 
 > 10 minutes exercise. 5 minutes review.
 
@@ -476,7 +476,7 @@ jill.get_class_name
   3. Has their own loud version of the `say_age` method.
 * Create a `TwoHeadedPerson` class that shares the same methods as `Person` but also has a second name attribute (for the other head).
 
-### You Do: Codebar (4:30, 25 minutes)
+### You Do: Codebar (25 minutes / 2:00)
 
 > 20 minutes exercise. 5 minutes review.
 
@@ -488,9 +488,9 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/codebar) and follow t
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/master/readme.md) and follow the instructions in the readme.
 
-## Break (4:30 - 4:40, 10 minutes)
+## Break (10 minutes / 2:10)
 
-## What's Next? (4:40 - 4:45, 5 minutes)
+## What's Next? (5 minutes / 2:15)
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
@@ -510,16 +510,16 @@ That simple class definition (`ActiveRecord::Base`) allows us to do things like.
 Artist.all
 # => Returns all Artist instances in the database
 
-Artist.create(name: "Limp Bizkit")
+Artist.create(name: "Three Days Grace")
 # => Create an Artist instance in the database.
 
-Artist.where(nationality: "Sweden")
-# => Returns all artists in the database with a `nationality` value of "Sweden"
+Artist.where(nationality: "Canadian")
+# => Returns all artists in the database with a `nationality` value of "Canadian"
 ```
 
 > [There are plenty more where these came from...](https://github.com/ga-wdi-lessons/activerecord-intro#instance-vs-class-methods)
 
-## Closing/Questions (4:45 - 5:00, 15 minutes)
+## Closing/Questions (15 minutes / 2:30)
 
 ## Sample Questions
 
