@@ -542,7 +542,7 @@ Artist.where(nationality: "Canadian")
 * **protected**: methods available to only the class and its descendants.
 
 ## Resources
-
+* [GA DC Lesson](https://github.com/ga-wdi-lessons/ruby-oop-inheritance)
 * [Getters and Setters](http://andrewsunglaekim.github.io/Get-set-ruby/)
 * [Visibility](http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods)
 * [Private/Protected](http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html)
