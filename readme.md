@@ -10,13 +10,13 @@
 
 ## Framing
 
-This morning, you started to learn about object-oriented programming in Ruby and how we can use classes to organize our code into objects.
+[Yesterday afternoon](https://github.com/ga-wdi-pvd/ruby-oop), you started to learn about object-oriented programming in Ruby and how we can use classes to organize our code into objects.
 
-This afternoon we will focus on two things...
-  1. Reviewing what you learned this morning by building a class together.
+This morning, we will focus on two things...
+  1. Reviewing what you learned yesterday by building a class together.
   2. Introduce the concept of **inheritance** and how classes can pass attributes and methods to each other.
 
-## We Do: Let's Build A Class (40 minutes / 0:40)
+## We Do: Let's Build A Class
 
 Let's collaboratively create a `Person` class!
 
@@ -77,7 +77,7 @@ Let's collaboratively create a `Person` class!
   <summary><strong>How can we generate an instance of this <code>Person</code> class?</strong></summary>
 
   ```rb
-  daenerys = Person.new("Daenerys", 16)
+  ariel = Person.new("Ariel", 16)
   ```
 </details>
 
@@ -101,9 +101,9 @@ Let's collaboratively create a `Person` class!
   ```
 
   ```rb
-  daenerys = Person.new("Daenerys", 16)
-  daenerys.get_name
-  # => "Daenerys"
+  ariel = Person.new("Ariel", 16)
+  ariel.get_name
+  # => "Ariel"
   ```
 
 </details>
@@ -130,10 +130,11 @@ Let's collaboratively create a `Person` class!
   ```
 
   ```rb
-  daenerys = Person.new("Daenerys", 16)
-  daenerys.get_name = "Jorah"
-  daenerys.set_name
-  # => "Jorah"
+  ariel = Person.new("Ariel", 16)
+  ariel.get_name
+  # => "Ariel"
+  ariel.set_name("Flounder")
+  # => "Flounder"
   ```
 
 </details>
@@ -174,10 +175,12 @@ Let's collaboratively create a `Person` class!
       puts "Hi, my name is #{@name}."
     end
   end
+  ```
 
-  daenerys = Person.new("Daenerys", 16)
-  daenerys.say_name
-  # => "Hi, my name is Daenerys."
+  ```rb
+  ariel = Person.new("Ariel", 16)
+  ariel.say_name
+  # => "Hi, my name is Ariel."
   ```
 
 </details>
@@ -223,16 +226,18 @@ Let's collaboratively create a `Person` class!
       return @@people
     end
   end
+  ```
 
-  daenerys = Person.new("Daenerys", 16)
-  puts daenerys.get_people
+  ```rb
+  ariel = Person.new("Ariel", 16)
+  ariel.get_people
   # => error
-  puts Person.get_people
-  # => [daenerys]
+  Person.get_people
+  # => [ariel]
 
-  jon = Person.new("Jon", 17)
-  puts Person.get_people
-  # => [daenerys, jon]
+  eric = Person.new("Eric", 17)
+  Person.get_people
+  # => [ariel, eric]
   ```
 
   > We could also use `self.name` in place of the instance variable `@name`. This is actually preferable. We'll explain why later...
@@ -280,15 +285,15 @@ end
 
 ```rb
 # Create instances of Group and Person
-targaryens = Group.new
-daenerys = Person.new("Daenerys", 16)
+merpeople = Group.new
+ariel = Person.new("Ariel", 16)
 
-# Keep track of how many Targaryens there are by adding `daenerys` (Person) to `targaryens` (Group)
-targaryens.add_person(daenerys)
+# Keep track of how many merpeople there are by adding `ariel` (Person) to `merpeople` (Group)
+merpeople.add_person(ariel)
 
-# To check how many Targaryens there are we can run this...
-targaryens.people
-# => [daenerys]
+# To check how many merpeople there are we can run this...
+merpeople.people
+# => [ariel]
 ```
 
 We could also add other attributes and methods to the `Group` class. It doesn't have to just be a container for instances of the `Person` class.
@@ -340,24 +345,25 @@ Sometimes we don't want to go through the trouble of creating a higher class lik
 
 One benefit of Ruby is that it is much easier to determine what context we are working in. Unlike Javascript, we cannot redefine what context we are working with using methods like `.bind` `.call` or `.apply`.
 
-### You Do: Keep Building `Person` (15 minutes / 0:55)
+### You Do: Keep Building `Person`
 
 > 10 minutes exercise. 5 minutes review.
 
 Make the following additions to our `Person` class. It is up to you to determine whether you should use an instance or class method.
 
+Include:
 * A method that checks to see if a `Person` is old enough to vote.
 * A method that returns the number of `Person` instances that have been created.
 * A method that counts the number of `Person` instances that have been created.
 * A method that compares two people and determines which one is older.
 
-## Break (10 minutes / 1:05)
+## Break
 
-## Inheritance (15 minutes / 1:20)
+## Inheritance
 
 Just like we get traits from our parents, we can use a feature called **inheritance** to create multiple classes (children) that share properties and methods from their parents.
 
-You won't need to write parent / child classes much in this class, but we will use inheritance to give some of our classes additional functionality, especially with rails in a few weeks.
+You won't need to write parent / child classes much in this class, but we will use inheritance to give some of our classes additional functionality, especially with rails next week.
 
 We've added a `say_age` method to `Person` below to better illustrate how inheritance works in Ruby.
 
@@ -393,21 +399,23 @@ class LoudPerson < Person
     puts "HEY YOU, MY NAME IS #{@name.upcase}!"
   end
 end
+```
 
-jill = Person.new("Jill", 10)
-jack = LoudPerson.new("Jack", 20)
+```rb
+jack = Person.new("Jack", 12)
+jill = LoudPerson.new("Jill", 10)
 
 # Both `say_age` methods produce the same result since it was not overwritten in the `LoudPerson` class.
+jack.say_age
+# => "I am 12 years old."
 jill.say_age
 # => "I am 10 years old."
-jack.say_age
-# => "I am 20 years old."
 
 # The `say_name` methods produce different results because we overwrote the original in the `LoudPerson` class.
-jill.say_name
-# => "My name is Jill."
 jack.say_name
-# => "HEY YOU, MY NAME IS JACK!"
+# => "My name is Jack."
+jill.say_name
+# => "HEY YOU, MY NAME IS JILL!"
 ```
 
 ### Inheritance & Class Variables
@@ -465,7 +473,7 @@ jill.get_class_name
 
 </details>
 
-### You Do: Inheritance (15 minutes / 1:35)
+### You Do: Inheritance
 
 > 10 minutes exercise. 5 minutes review.
 
@@ -476,7 +484,7 @@ jill.get_class_name
   3. Has their own loud version of the `say_age` method.
 * Create a `TwoHeadedPerson` class that shares the same methods as `Person` but also has a second name attribute (for the other head).
 
-### You Do: Codebar (25 minutes / 2:00)
+### You Do: Codebar
 
 > 20 minutes exercise. 5 minutes review.
 
@@ -488,13 +496,13 @@ Clone down [this repo](https://github.com/ga-wdi-exercises/codebar) and follow t
 
 Clone down [this repo](https://github.com/ga-wdi-exercises/shopping_list/blob/master/readme.md) and follow the instructions in the readme.
 
-## Break (10 minutes / 2:10)
+## Break
 
-## What's Next? (5 minutes / 2:15)
+## What's Next?
 
 When we start using Rails, our class definitions are going to be very simple. In fact, they won't contain any content at all! They will, however, inherit from a gem called ActiveRecord. Through this, our classes -- or as we'll come to know them, "models" -- will have access to a wealth of methods that allow us to interact with a database.
 
-[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/solution) Here's what an `Artist` model looks like...
+[Let's use Tunr as an example.](https://github.com/ga-wdi-exercises/tunr_rails/tree/soluteric) Here's what an `Artist` model looks like...
 
 ```rb
 class Artist < ActiveRecord::Base
@@ -521,7 +529,7 @@ Artist.where(nationality: "Canadian")
 
 ## Closing/Questions (15 minutes / 2:30)
 
-## Sample Questions
+## Review Questions
 
 * Explain the use of self in Ruby.
 * Explain the difference between local, instance and class variables.
@@ -544,7 +552,7 @@ Artist.where(nationality: "Canadian")
 ## Resources
 * [GA DC Lesson](https://github.com/ga-wdi-lessons/ruby-oop-inheritance)
 * [Getters and Setters](http://andrewsunglaekim.github.io/Get-set-ruby/)
-* [Visibility](http://stackoverflow.com/questions/9882754/what-are-the-differences-between-private-public-and-protected-methods)
+* [Visibility](http://stackoverflow.com/questerics/9882754/what-are-the-differences-between-private-public-and-protected-methods)
 * [Private/Protected](http://matthodan.com/2010/08/08/ruby-private-methods-vs-protected-methods.html)
 
 ## Extra Material: Modules
@@ -553,7 +561,7 @@ Classes are great for packaging up related methods: all my User-related methods 
 
 But let's say my app involves translating English into other languages: I want a "translate-to-French" method, and one for Spanish, German, and so on.
 
-Putting those into a class doesn't really make semantic sense. A class should be a blueprint for an object. Translator methods don't really "belong" to a specific object: I may want to use them with my Users, or with blog posts, or with product descriptions.
+Putting those into a class doesn't really make semantic sense. A class should be a blueprint for an object. Translator methods don't really "belong" to a specific object: I may want to use them with my Users, or with blog posts, or with product descripterics.
 
 A **module** is a lot like a class. The biggest difference is semantic: **Modules are just bundles of related methods. They're not a blueprint for an object.** You may have heard about **mixins**; in Ruby, **modules** are how **mixins** are implemented.
 
