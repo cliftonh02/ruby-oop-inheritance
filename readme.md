@@ -527,7 +527,7 @@ Artist.where(nationality: "Canadian")
 
 > [There are plenty more where these came from...](https://github.com/ga-wdi-lessons/activerecord-intro#instance-vs-class-methods)
 
-## Closing/Questions (15 minutes / 2:30)
+## Closing/Questions
 
 ## Review Questions
 
